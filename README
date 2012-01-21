@@ -6,7 +6,8 @@ Mobs and Roles:
   Notes:
 
     * mobs can assume one role at a time and can change roles
-    * to set/change a mob's role you must pass the mob to the role:  mob.role = Thief.new(mob)
+    * to set/change a mob's role you must pass the mob to the role:  
+        mob.role = Worker.new(mob)
     * roles inherit from a base Role class which provides helpers.
 
   The different Roles:
@@ -44,7 +45,7 @@ Mobs and Roles:
       * travels based on scout information
       * can steal eggs
 
-Resources and Structures:
+Resources
 
   The different Resources:
 
