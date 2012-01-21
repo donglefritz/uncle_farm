@@ -1,0 +1,70 @@
+
+README:
+
+Mobs and Roles:
+
+  Notes:
+
+    * mobs can assume one role at a time and can change roles
+    * to set/change a mob's role you must pass the mob to the role:  mob.role = Thief.new(mob)
+    * roles inherit from a base Role class which provides helpers.
+
+  The different Roles:
+
+    Queen:
+
+      * all mobs are assigned a queen
+      * wanders very close to home
+      * can eat food to gain energy
+      * can lay eggs at the cost of energy
+
+    Worker:
+
+      * wanders
+      * can collect and return food to the queen
+
+    Guard:
+  
+      * wanders near their queen
+      * can attack others
+
+    (upcoming) Medic:
+
+      * wanders
+      * can heal others
+
+    (upcoming) Scout:
+
+      * wanders
+      * can learn information from encounters
+      * can pass information to others
+
+    (upcoming) Raider:
+
+      * travels based on scout information
+      * can steal eggs
+
+Resources and Structures:
+
+  The different Resources:
+
+    Energy:
+
+      * only used by queens
+      * gained by eating
+      * lost by laying eggs
+
+    Food:
+
+      * food is dropped randomly
+      * food can be collected by workers
+      * food can be fed to a queen to give the queen energy
+
+    Eggs:
+
+      * eggs are created by queens at the cost of energy
+      * eggs hatch into new ants with random roles after a period of time
+      * (upcoming) eggs can be stolen by thiefs
+      * (upcoming) stolen eggs can be used as food (fed to a queen) 
+
+
