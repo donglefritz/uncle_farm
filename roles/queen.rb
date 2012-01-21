@@ -18,6 +18,10 @@ class Queen < Role
   def update
     super
     @egg_ticks += 1
+    if @egg_ticks > 3000
+      @home = Point.random 
+      @egg_ticks = 0
+    end
     @dest = Point.near(@home) if at?(@dest) and rand(100) == 1
     lay_egg if @energy >= @egg_cost and @egg_ticks > 300
   end
