@@ -26,7 +26,7 @@ class Worker < Role
   end
 
   def collect(resource)
-    if @collected.nil?
+    if @collected.nil? and not queen.nil?
       @collected   = resource.get_collected 
       @collected.z = z + 1
       puts "#{name} collected #{resource.name}"
