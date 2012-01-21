@@ -21,27 +21,18 @@ class Game < Chingu::Window
 
     # add some stuff:
     100.times { @food << Food.new }
-    2.times   { add_colony }
+    4.times   { add_colony }
   end
 
   def debug
-    q = Mob.new
-    q.set_role(:queen)
-    @mobs << q
-    2.times do
-      m = Mob.new
-      m.set_queen(q)
-      m.set_role(:guard)
-      m.set_position(q)
-      @mobs << m
-    end
+    add_colony
     puts "DEBUG: added a colony"
   end
 
   def update
     super
     update_mobs
-    update_and_add_food
+    update_food
     update_eggs
     handle_collisions
     $window.caption = "FPS: #{$window.fps} food: #{@food.length} mobs: #{@mobs.length}"
@@ -111,11 +102,13 @@ class Game < Chingu::Window
   ## food
   ################
 
-  def update_and_add_food 
+  def update_food 
     add_food(5)
     @food.each do |food| 
-      @food.delete(food) if food.eaten?
-      food.destroy
+      if food.eaten?
+        @food.delete(food) 
+        food.destroy
+      end
     end
   end
 
