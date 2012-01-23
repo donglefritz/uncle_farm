@@ -18,6 +18,8 @@ class Mob < Node
   @@roles[:queen]  = Proc.new { |mob| Queen.new(mob)  }
   @@roles[:worker] = Proc.new { |mob| Worker.new(mob) }
   @@roles[:guard]  = Proc.new { |mob| Guard.new(mob)  }
+  @@roles[:scout]  = Proc.new { |mob| Scout.new(mob)  }
+  @@roles[:raider] = Proc.new { |mob| Raider.new(mob) }
 
   def initialize(options={})
     super(options)
@@ -45,7 +47,7 @@ class Mob < Node
 
   def take_damage(amount)
     @health -= amount
-    puts "#{name} took #{amount} damage and now has #{@health}"
+    #puts "#{name} took #{amount} damage and now has #{@health}"
     die if dead?
   end
 

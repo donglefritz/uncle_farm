@@ -15,6 +15,10 @@ class Role
     @starting_speed  = rand(8) + 2
   end
 
+  #####################
+  ## interface methods:
+  #####################
+
   def update
     move_towards(@dest) if @dest
   end

@@ -29,13 +29,13 @@ class Worker < Role
     if @collected.nil? and not queen.nil?
       @collected   = resource.get_collected 
       @collected.z = z + 1
-      puts "#{name} collected #{resource.name}"
+      #puts "#{name} collected #{resource.name}"
     end
   end
 
   def give(mob)
     mob.role.take(@collected) unless @collected.nil?
-    puts "#{name} gave #{@collected.name} to #{mob.name}"
+    #puts "#{name} gave #{@collected.name} to #{mob.name}"
     @collected = nil
   end
 
