@@ -58,9 +58,9 @@ class Queen < Role
       @mobs.each do |mob|
         if mob.has_role?(:raider)
           if not mob.role.raiding?
-            mob.raid(dest) 
+            puts "#{name} is sending #{mob.role.name} to raid at #{dest.x},#{dest.y}"
+            mob.role.raid(dest) 
             @intel.delete(dest)
-            puts "#{name} just sent #{mob.role.name} to raid at #{dest.x},#{dest.y}"
           end
         end
       end

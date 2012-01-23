@@ -23,7 +23,7 @@ class Guard < Role
   end
 
   def attack(mob)
-    #puts "#{name} is attacking #{mob.name} for #{@base.power}"
+    puts "#{name} is attacking #{mob.role.name} for #{@base.power}"
     mob.take_damage(@base.power)
     @attack_ticks = 0
   end

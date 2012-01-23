@@ -5,12 +5,13 @@ class Raider < Role
 
   def initialize(base)
     super(base)
-    @base.color   = Gosu::Color::CYAN
-    @attack_ticks = 0
-    @raid_ticks   = 0
-    @attack_delay = 200
-    @raid_length  = 5000
-    @raid_dest    = nil
+    @base.color      = Gosu::Color::CYAN
+    @attack_ticks    = 0
+    @raid_ticks      = 0
+    @attack_delay    = 200
+    @raid_length     = 2000
+    @raid_dest       = nil
+    @is_raiding      = false
   end
 
   def update
@@ -22,7 +23,10 @@ class Raider < Role
       @dest = Point.near(@base.queen) if at?(@dest) and rand(100) == 1
     else
       if @raid_ticks > @raid_length
-        @dest = Point.near(@base.queen) if at?(@dest)
+        @dest       = Point.near(@base.queen)
+        @is_raiding = false
+        @raid_ticks = 0
+        puts "#{name} is done raiding"
       else
         @dest = Point.near(@raid_dest) if at?(@dest)
       end
@@ -36,16 +40,18 @@ class Raider < Role
   end
 
   def raid(point)
+    puts "#{name} is going to raid at #{point.x},#{point.y}"
     @raid_dest  = point
     @raid_ticks = 0
+    @is_raiding = true
   end
 
   def raiding?
-    @raid_ticks > @raid_length
+    @is_raiding
   end
 
   def attack(mob)
-    puts "#{name} is attacking #{mob.name} for #{@base.power}"
+    puts "#{name} is attacking #{mob.role.name} for #{@base.power}"
     mob.take_damage(@base.power)
     @attack_ticks = 0
   end
